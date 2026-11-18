@@ -21,7 +21,7 @@
         }
 
         body {
-            background-color: #faf9f6; /* Fondo marfil/arena suave estilo alta estética */
+            background-color: #faf9f6;
             color: #222222;
             line-height: 1.5;
             padding-bottom: 60px;
@@ -33,9 +33,6 @@
             padding: 0 20px 20px 20px;
         }
 
-        /* ==========================================================
-           SECCIÓN DE PORTADA Y LOGO SUPERPUESTO
-           ========================================================== */
         .brand-header {
             margin-bottom: 30px;
             text-align: center;
@@ -91,9 +88,6 @@
             margin-bottom: 20px;
         }
 
-        /* ==========================================================
-           BUSCADOR DINÁMICO
-           ========================================================== */
         .search-box {
             max-width: 500px;
             margin: 0 auto;
@@ -114,9 +108,6 @@
             border-color: #222222;
         }
 
-        /* ==========================================================
-           TÍTULOS DE SECCIÓN
-           ========================================================== */
         .section-title {
             font-size: 1.35rem;
             font-weight: 600;
@@ -126,9 +117,6 @@
             color: #111111;
         }
 
-        /* ==========================================================
-           GRILLA DE SERVICIOS
-           ========================================================== */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -211,9 +199,6 @@
             color: #ffffff;
         }
 
-        /* ==========================================================
-           CALENDARIO INTERACTIVO
-           ========================================================== */
         .calendar-wrapper {
             max-width: 550px;
             margin: 20px auto;
@@ -309,9 +294,6 @@
             aspect-ratio: 1 / 1;
         }
 
-        /* ==========================================================
-           GRILLA DE HORARIOS
-           ========================================================== */
         .times-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -353,9 +335,6 @@
             font-weight: 600;
         }
 
-        /* ==========================================================
-           RESUMEN Y BOTÓN WHATSAPP
-           ========================================================== */
         .summary-box {
             max-width: 550px;
             margin: 35px auto 0;
@@ -437,9 +416,6 @@
             margin-top: 8px;
         }
 
-        /* ==========================================================
-           CARTEL MODAL ESTÉTICO DE SEÑA
-           ========================================================== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -500,9 +476,6 @@
 
         .modal-btn-cancel:hover { background-color: #e2e2e2; }
 
-        /* ==========================================================
-           ACADEMIA Y CURSOS CERTIFICADOS / DIPLOMA
-           ========================================================== */
         .courses-section {
             margin-top: 50px; padding-top: 20px; border-top: 2px dashed #e8e2dc;
         }
@@ -539,9 +512,6 @@
         .btn-course { width: 100%; padding: 12px; font-size: 1rem; font-weight: 600; background-color: #ffffff; color: #222222; border: 2px solid #222222; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
         .btn-course:hover { background-color: #222222; color: #ffffff; }
 
-        /* ==========================================================
-           ESTILOS PANEL DE ADMIN PROTEGIDO
-           ========================================================== */
         .admin-modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; padding: 15px;
@@ -553,9 +523,6 @@
         .admin-row { padding: 12px; border: 1px solid #e8e2dc; border-radius: 8px; margin-bottom: 10px; background: #faf9f6; }
         .admin-row.busy { background: #fff4f4; border-color: #ffcccc; }
         
-        /* ==========================================================
-           FOOTER ACCESO DISCRETO DUEÑO
-           ========================================================== */
         .footer-admin {
             text-align: center;
             margin-top: 50px;
@@ -580,7 +547,6 @@
 </head>
 <body>
 
-    <!-- PORTADA Y LOGO SUPERPUESTO -->
     <div class="cover-container">
         <img id="coverImage" src="portada.jpg" alt="Portada Estetica">
     </div>
@@ -598,11 +564,9 @@
             </div>
         </div>
 
-        <!-- 1. CATÁLOGO DE SERVICIOS -->
         <h2 class="section-title">1. Seleccioná los servicios</h2>
         <div class="services-grid" id="servicesGrid"></div>
 
-        <!-- 2. CALENDARIO -->
         <h2 class="section-title" style="text-align: center;">2. Elegí el día</h2>
         <div class="calendar-wrapper">
             <div class="calendar-header">
@@ -623,11 +587,9 @@
             <p class="helper-text">Domingos cerrado. Los dias tachados no estan disponibles.</p>
         </div>
 
-        <!-- 3. HORARIOS -->
         <h2 class="section-title" style="text-align: center;">3. Elegí el horario</h2>
         <div class="times-grid" id="timesGrid"></div>
 
-        <!-- 4. RESUMEN Y WHATSAPP -->
         <div class="summary-box">
             <h3>Resumen de tu turno</h3>
             <ul class="summary-list" id="summaryList">
@@ -646,7 +608,6 @@
             </button>
         </div>
 
-        <!-- 5. ACADEMIA Y CURSOS CON DIPLOMA -->
         <div class="courses-section">
             <h2 class="section-title">Academia & Cursos Profesionales</h2>
             <p style="color: #666666; margin-bottom: 15px;">Capacitate desde cero y sali lista para trabajar. Todos los cursos incluyen diploma.</p>
@@ -655,12 +616,10 @@
         </div>
     </div>
 
-    <!-- ACCESO DUEÑO DISCRETO -->
     <div class="footer-admin">
         <a href="#" onclick="solicitarAccesoAdmin(event)">⚙️ Acceso Dueño</a>
     </div>
 
-    <!-- PANEL DE ADMINISTRADOR MODAL -->
     <div class="admin-modal-overlay" id="adminModal">
         <div class="admin-modal-card">
             <h2 style="margin-top:0; display:flex; justify-content:space-between; align-items:center;">
@@ -675,10 +634,10 @@
             <h3 style="font-size:1rem; margin:15px 0 8px;">🖼️ Cambiar Portada y Logo</h3>
             <div style="display:flex; gap:10px; margin-bottom:15px;">
                 <label style="flex:1; background:#f4f1ea; padding:10px; border:1px dashed #d0c5bc; border-radius:6px; text-align:center; cursor:pointer; font-size:0.9rem;">
-                    📷 Cambiar Portada <input type="file" accept="image/*" onchange="subirImagenLocal(event, 'admin_portada')" style="display:none;">
+                    📷 Cambiar Portada <input type="file" accept="image/*" onchange="subirImagenNube(event, 'portada')" style="display:none;">
                 </label>
                 <label style="flex:1; background:#f4f1ea; padding:10px; border:1px dashed #d0c5bc; border-radius:6px; text-align:center; cursor:pointer; font-size:0.9rem;">
-                    ✨ Cambiar Logo <input type="file" accept="image/*" onchange="subirImagenLocal(event, 'admin_logo')" style="display:none;">
+                    ✨ Cambiar Logo <input type="file" accept="image/*" onchange="subirImagenNube(event, 'logo')" style="display:none;">
                 </label>
             </div>
 
@@ -694,7 +653,6 @@
             </label>
             <button type="button" onclick="agregarServicioConFoto()" style="background-color: #25D366; color:#fff; border:none; padding:10px; border-radius:6px; font-weight:bold; cursor:pointer; width:100%; margin-bottom:20px;">Guardar Nuevo Servicio</button>
 
-            <!-- GESTIÓN Y EDICIÓN DE CURSOS -->
             <h3 style="font-size:1rem; margin:15px 0 8px;">🎓 Gestionar y Editar Cursos Actuales</h3>
             <div id="listaCursosAdmin" style="max-height:180px; overflow-y:auto; margin-bottom:15px;"></div>
 
@@ -710,7 +668,6 @@
         </div>
     </div>
 
-    <!-- CARTEL MODAL ESTÉTICO DE SEÑA -->
     <div class="modal-overlay" id="señaModal">
         <div class="modal-card">
             <h3 class="modal-title">✨ Confirmación de Turno ✨</h3>
@@ -729,9 +686,6 @@
     </div>
 
 <script>
-    // ==========================================
-    // CONFIGURACIÓN DE FIREBASE (Tus credenciales reales)
-    // ==========================================
     const firebaseConfig = {
         apiKey: "AIzaSyAMm8773jmHLE64bbrWgAi_MU-JP5p1EJ0",
         authDomain: "esteticaapp-20c2a.firebaseapp.com",
@@ -749,7 +703,6 @@
     const PASSWORD_ADMIN = "exequiel1910!";
     const horariosDisponibles = ["09:00", "10:30", "11:30", "14:00", "15:30", "17:45", "19:00"];
 
-    // LISTADO COMPLETO DE LOS 9 SERVICIOS
     const serviciosPorDefecto = [
         { id: 1, categoria: "Uñas", nombre: "Esmaltado Semipermanente", precioTexto: "$20.000", imagen: "" },
         { id: 2, categoria: "Uñas", nombre: "Soft Gel", precioTexto: "$24.000", imagen: "" },
@@ -762,9 +715,6 @@
         { id: 9, categoria: "Rostro", nombre: "Maquillaje Social / Evento", precioTexto: "$35.000 a $55.000", imagen: "" }
     ];
 
-    let servicios = JSON.parse(localStorage.getItem("admin_servicios")) || serviciosPorDefecto;
-
-    // LISTADO COMPLETO DE LOS 3 CURSOS
     const cursosPorDefecto = [
         {
             id: 101,
@@ -792,7 +742,8 @@
         }
     ];
 
-    let cursos = JSON.parse(localStorage.getItem("admin_cursos")) || cursosPorDefecto;
+    let servicios = [];
+    let cursos = [];
     let turnosBloqueadosNube = {};
 
     let seleccionados = [];
@@ -809,15 +760,46 @@
     const searchInput = document.getElementById("searchInput");
 
     window.addEventListener("DOMContentLoaded", () => {
-        const portadaGuardada = localStorage.getItem("admin_portada");
-        const logoGuardado = localStorage.getItem("admin_logo");
-        if(portadaGuardada) document.getElementById("coverImage").src = portadaGuardada;
-        if(logoGuardado) document.getElementById("logoImage").src = logoGuardado;
+        // Sincronización en tiempo real de Configuración (Logo y Portada) desde Firestore
+        db.collection("configuracion").doc("general").onSnapshot(doc => {
+            if (doc.exists) {
+                const data = doc.data();
+                if (data.portada) document.getElementById("coverImage").src = data.portada;
+                if (data.logo) document.getElementById("logoImage").src = data.logo;
+            }
+        });
 
-        renderServicios();
-        renderCursos();
+        // Sincronización en tiempo real de Servicios desde Firestore
+        db.collection("servicios").onSnapshot(snapshot => {
+            if (snapshot.empty) {
+                serviciosPorDefecto.forEach(s => {
+                    db.collection("servicios").doc(String(s.id)).set(s);
+                });
+            } else {
+                servicios = [];
+                snapshot.forEach(doc => {
+                    servicios.push(doc.data());
+                });
+                renderServicios(searchInput.value);
+            }
+        });
+
+        // Sincronización en tiempo real de Cursos desde Firestore
+        db.collection("cursos").onSnapshot(snapshot => {
+            if (snapshot.empty) {
+                cursosPorDefecto.forEach(c => {
+                    db.collection("cursos").doc(String(c.id)).set(c);
+                });
+            } else {
+                cursos = [];
+                snapshot.forEach(doc => {
+                    cursos.push(doc.data());
+                });
+                renderCursos(searchInput.value);
+            }
+        });
         
-        // Sincronización global en tiempo real mediante Firestore (onSnapshot) y localStorage
+        // Sincronización en tiempo real de Turnos Bloqueados desde Firestore
         db.collection("turnos_bloqueados").onSnapshot(snapshot => {
             turnosBloqueadosNube = {};
             snapshot.forEach(doc => {
@@ -831,21 +813,6 @@
             renderHorarios();
             if(document.getElementById("adminModal").style.display === "flex") {
                 cargarHorariosAdmin();
-            }
-        });
-
-        // Sincronización global automática de cambios locales (servicios, cursos y diseño) entre pestañas/usuarios
-        window.addEventListener("storage", (e) => {
-            if (e.key === "admin_servicios") {
-                servicios = JSON.parse(e.newValue) || serviciosPorDefecto;
-                renderServicios(searchInput.value);
-            } else if (e.key === "admin_cursos") {
-                cursos = JSON.parse(e.newValue) || cursosPorDefecto;
-                renderCursos(searchInput.value);
-            } else if (e.key === "admin_portada" && e.newValue) {
-                document.getElementById("coverImage").src = e.newValue;
-            } else if (e.key === "admin_logo" && e.newValue) {
-                document.getElementById("logoImage").src = e.newValue;
             }
         });
     });
@@ -872,20 +839,23 @@
         renderHorarios();
     }
 
-    function subirImagenLocal(event, storageKey) {
+    function subirImagenNube(event, tipo) {
         const file = event.target.files[0];
         if (!file) return;
         const reader = new FileReader();
         reader.onload = function(e) {
-            localStorage.setItem(storageKey, e.target.result);
-            if(storageKey === 'admin_portada') document.getElementById("coverImage").src = e.target.result;
-            if(storageKey === 'admin_logo') document.getElementById("logoImage").src = e.target.result;
-            alert("¡Imagen actualizada!");
+            const base64Img = e.target.result;
+            db.collection("configuracion").doc("general").set({
+                [tipo]: base64Img
+            }, { merge: true }).then(() => {
+                alert(`¡${tipo === 'portada' ? 'Portada' : 'Logo'} actualizado en la nube con éxito!`);
+            }).catch(err => {
+                alert("Error al subir la imagen a la nube: " + err.message);
+            });
         };
         reader.readAsDataURL(file);
     }
 
-    // GESTIÓN DE TURNOS ADMIN (CONECTADO A FIRESTORE)
     function cargarHorariosAdmin() {
         const fechaInput = document.getElementById("adminDate").value;
         if (!fechaInput) return;
@@ -930,23 +900,22 @@
         }
     }
 
-    // GESTIÓN DE SERVICIOS ADMIN
     function cargarServiciosAdmin() {
         const contenedor = document.getElementById("listaServiciosAdmin");
         contenedor.innerHTML = "";
-        servicios.forEach((s, index) => {
+        servicios.forEach((s) => {
             const div = document.createElement("div");
             div.className = "admin-row";
             div.innerHTML = `
                 <div style="margin-bottom:6px;">
-                    <input type="text" id="s_nom_${index}" value="${s.nombre}" style="width:100%; padding:6px; margin-bottom:4px; border:1px solid #ccc; border-radius:4px;">
-                    <input type="text" id="s_pre_${index}" value="${s.precioTexto}" style="width:100%; padding:6px; border:1px solid #ccc; border-radius:4px;">
+                    <input type="text" id="s_nom_${s.id}" value="${s.nombre}" style="width:100%; padding:6px; margin-bottom:4px; border:1px solid #ccc; border-radius:4px;">
+                    <input type="text" id="s_pre_${s.id}" value="${s.precioTexto}" style="width:100%; padding:6px; border:1px solid #ccc; border-radius:4px;">
                 </div>
                 <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <label style="font-size:0.8rem; background:#f4f1ea; padding:4px 8px; border:1px dashed #d0c5bc; border-radius:4px; cursor:pointer;">Cambiar foto <input type="file" accept="image/*" onchange="cambiarFotoServicioAdmin(event, ${index})" style="display:none;"></label>
+                    <label style="font-size:0.8rem; background:#f4f1ea; padding:4px 8px; border:1px dashed #d0c5bc; border-radius:4px; cursor:pointer;">Cambiar foto <input type="file" accept="image/*" onchange="cambiarFotoServicioAdmin(event, ${s.id})" style="display:none;"></label>
                     <div>
-                        <button type="button" onclick="guardarServicioAdmin(${index})" style="padding:5px 10px; background:#f0ad4e; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:0.8rem;">Guardar</button>
-                        <button type="button" onclick="eliminarServicioAdmin(${index})" style="padding:5px 10px; background:#e74c3c; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:0.8rem;">Borrar</button>
+                        <button type="button" onclick="guardarServicioAdmin(${s.id})" style="padding:5px 10px; background:#f0ad4e; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:0.8rem;">Guardar en Nube</button>
+                        <button type="button" onclick="eliminarServicioAdmin(${s.id})" style="padding:5px 10px; background:#e74c3c; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:0.8rem;">Borrar</button>
                     </div>
                 </div>
             `;
@@ -954,36 +923,37 @@
         });
     }
 
-    function cambiarFotoServicioAdmin(event, index) {
+    function cambiarFotoServicioAdmin(event, id) {
         const file = event.target.files[0];
         if (!file) return;
         const reader = new FileReader();
         reader.onload = function(e) {
-            servicios[index].imagen = e.target.result;
-            localStorage.setItem("admin_servicios", JSON.stringify(servicios));
-            renderServicios(searchInput.value);
-            alert("¡Foto actualizada!");
-            cargarServiciosAdmin();
+            const base64Img = e.target.result;
+            db.collection("servicios").doc(String(id)).update({ imagen: base64Img }).then(() => {
+                alert("¡Foto de servicio actualizada en la nube!");
+                cargarServiciosAdmin();
+            });
         };
         reader.readAsDataURL(file);
     }
 
-    function guardarServicioAdmin(index) {
-        servicios[index].nombre = document.getElementById(`s_nom_${index}`).value;
-        servicios[index].precioTexto = document.getElementById(`s_pre_${index}`).value;
-        localStorage.setItem("admin_servicios", JSON.stringify(servicios));
-        renderServicios(searchInput.value);
-        actualizarResumen();
-        alert("¡Servicio actualizado!");
-        cargarServiciosAdmin();
+    function guardarServicioAdmin(id) {
+        const nuevoNombre = document.getElementById(`s_nom_${id}`).value;
+        const nuevoPrecio = document.getElementById(`s_pre_${id}`).value;
+        db.collection("servicios").doc(String(id)).update({
+            nombre: nuevoNombre,
+            precioTexto: nuevoPrecio
+        }).then(() => {
+            alert("¡Servicio actualizado en la nube con éxito!");
+            cargarServiciosAdmin();
+        });
     }
 
-    function eliminarServicioAdmin(index) {
-        servicios.splice(index, 1);
-        localStorage.setItem("admin_servicios", JSON.stringify(servicios));
-        renderServicios(searchInput.value);
-        actualizarResumen();
-        cargarServiciosAdmin();
+    function eliminarServicioAdmin(id) {
+        db.collection("servicios").doc(String(id)).delete().then(() => {
+            alert("¡Servicio eliminado de la nube!");
+            cargarServiciosAdmin();
+        });
     }
 
     function agregarServicioConFoto() {
@@ -994,20 +964,29 @@
 
         if(!cat || !nom || !prec) { alert("Completá los campos obligatorios."); return; }
 
+        const nuevoId = Date.now();
+
+        const guardarEnFirestore = (imgUrl) => {
+            db.collection("servicios").doc(String(nuevoId)).set({
+                id: nuevoId,
+                categoria: cat,
+                nombre: nom,
+                precioTexto: prec,
+                imagen: imgUrl
+            }).then(() => {
+                limpiarFormServicio();
+                alert("¡Nuevo servicio agregado a la nube!");
+            });
+        };
+
         if (fileInput.files && fileInput.files[0]) {
             const reader = new FileReader();
             reader.onload = function(e) {
-                servicios.push({ id: Date.now(), categoria: cat, nombre: nom, precioTexto: prec, imagen: e.target.result });
-                localStorage.setItem("admin_servicios", JSON.stringify(servicios));
-                renderServicios(searchInput.value);
-                limpiarFormServicio();
+                guardarEnFirestore(e.target.result);
             };
             reader.readAsDataURL(fileInput.files[0]);
         } else {
-            servicios.push({ id: Date.now(), categoria: cat, nombre: nom, precioTexto: prec, imagen: "" });
-            localStorage.setItem("admin_servicios", JSON.stringify(servicios));
-            renderServicios(searchInput.value);
-            limpiarFormServicio();
+            guardarEnFirestore("");
         }
     }
 
@@ -1017,33 +996,31 @@
         document.getElementById("nuevoServPrecio").value = "";
         document.getElementById("nuevoServImgFile").value = "";
         cargarServiciosAdmin();
-        alert("¡Servicio agregado!");
     }
 
-    // GESTIÓN DE CURSOS ADMIN
     function cargarCursosAdmin() {
         const contenedor = document.getElementById("listaCursosAdmin");
         contenedor.innerHTML = "";
-        cursos.forEach((c, index) => {
+        cursos.forEach((c) => {
             const div = document.createElement("div");
             div.className = "admin-row";
             let temarioStr = c.temario ? c.temario.join(", ") : "";
             div.innerHTML = `
                 <div style="margin-bottom:6px;">
                     <label style="font-size:0.75rem; color:#555;">Título:</label>
-                    <input type="text" id="c_tit_${index}" value="${c.titulo}" style="width:100%; padding:6px; margin-bottom:4px; border:1px solid #ccc; border-radius:4px;">
+                    <input type="text" id="c_tit_${c.id}" value="${c.titulo}" style="width:100%; padding:6px; margin-bottom:4px; border:1px solid #ccc; border-radius:4px;">
                     <label style="font-size:0.75rem; color:#555;">Precio (número):</label>
-                    <input type="number" id="c_pre_${index}" value="${c.precio}" style="width:100%; padding:6px; margin-bottom:4px; border:1px solid #ccc; border-radius:4px;">
+                    <input type="number" id="c_pre_${c.id}" value="${c.precio}" style="width:100%; padding:6px; margin-bottom:4px; border:1px solid #ccc; border-radius:4px;">
                     <label style="font-size:0.75rem; color:#555;">Descripción:</label>
-                    <textarea id="c_desc_${index}" style="width:100%; padding:6px; margin-bottom:4px; border:1px solid #ccc; border-radius:4px; height:45px;">${c.descripcion || ""}</textarea>
+                    <textarea id="c_desc_${c.id}" style="width:100%; padding:6px; margin-bottom:4px; border:1px solid #ccc; border-radius:4px; height:45px;">${c.descripcion || ""}</textarea>
                     <label style="font-size:0.75rem; color:#555;">Temario (separado por comas):</label>
-                    <textarea id="c_tem_${index}" style="width:100%; padding:6px; border:1px solid #ccc; border-radius:4px; height:45px;">${temarioStr}</textarea>
+                    <textarea id="c_tem_${c.id}" style="width:100%; padding:6px; border:1px solid #ccc; border-radius:4px; height:45px;">${temarioStr}</textarea>
                 </div>
                 <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <label style="font-size:0.8rem; background:#f4f1ea; padding:4px 8px; border:1px dashed #d0c5bc; border-radius:4px; cursor:pointer;">Cambiar foto <input type="file" accept="image/*" onchange="cambiarFotoCursoAdmin(event, ${index})" style="display:none;"></label>
+                    <label style="font-size:0.8rem; background:#f4f1ea; padding:4px 8px; border:1px dashed #d0c5bc; border-radius:4px; cursor:pointer;">Cambiar foto <input type="file" accept="image/*" onchange="cambiarFotoCursoAdmin(event, ${c.id})" style="display:none;"></label>
                     <div>
-                        <button type="button" onclick="guardarCursoAdmin(${index})" style="padding:5px 10px; background:#f0ad4e; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:0.8rem;">Guardar</button>
-                        <button type="button" onclick="eliminarCursoAdmin(${index})" style="padding:5px 10px; background:#e74c3c; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:0.8rem;">Borrar</button>
+                        <button type="button" onclick="guardarCursoAdmin(${c.id})" style="padding:5px 10px; background:#f0ad4e; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:0.8rem;">Guardar en Nube</button>
+                        <button type="button" onclick="eliminarCursoAdmin(${c.id})" style="padding:5px 10px; background:#e74c3c; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:0.8rem;">Borrar</button>
                     </div>
                 </div>
             `;
@@ -1051,38 +1028,42 @@
         });
     }
 
-    function cambiarFotoCursoAdmin(event, index) {
+    function cambiarFotoCursoAdmin(event, id) {
         const file = event.target.files[0];
         if (!file) return;
         const reader = new FileReader();
         reader.onload = function(e) {
-            cursos[index].imagen = e.target.result;
-            localStorage.setItem("admin_cursos", JSON.stringify(cursos));
-            renderCursos(searchInput.value);
-            alert("¡Foto de curso actualizada!");
-            cargarCursosAdmin();
+            db.collection("cursos").doc(String(id)).update({ imagen: e.target.result }).then(() => {
+                alert("¡Foto de curso actualizada en la nube!");
+                cargarCursosAdmin();
+            });
         };
         reader.readAsDataURL(file);
     }
 
-    function guardarCursoAdmin(index) {
-        cursos[index].titulo = document.getElementById(`c_tit_${index}`).value;
-        cursos[index].precio = Number(document.getElementById(`c_pre_${index}`).value);
-        cursos[index].descripcion = document.getElementById(`c_desc_${index}`).value;
-        const temTxt = document.getElementById(`c_tem_${index}`).value;
-        cursos[index].temario = temTxt ? temTxt.split(',').map(t => t.trim()).filter(t => t.length > 0) : [];
-        
-        localStorage.setItem("admin_cursos", JSON.stringify(cursos));
-        renderCursos(searchInput.value);
-        alert("¡Curso actualizado con éxito!");
-        cargarCursosAdmin();
+    function guardarCursoAdmin(id) {
+        const tit = document.getElementById(`c_tit_${id}`).value;
+        const prec = Number(document.getElementById(`c_pre_${id}`).value);
+        const desc = document.getElementById(`c_desc_${id}`).value;
+        const temTxt = document.getElementById(`c_tem_${id}`).value;
+        const listaTemas = temTxt ? temTxt.split(',').map(t => t.trim()).filter(t => t.length > 0) : [];
+
+        db.collection("cursos").doc(String(id)).update({
+            titulo: tit,
+            precio: prec,
+            descripcion: desc,
+            temario: listaTemas
+        }).then(() => {
+            alert("¡Curso actualizado en la nube con éxito!");
+            cargarCursosAdmin();
+        });
     }
 
-    function eliminarCursoAdmin(index) {
-        cursos.splice(index, 1);
-        localStorage.setItem("admin_cursos", JSON.stringify(cursos));
-        renderCursos(searchInput.value);
-        cargarCursosAdmin();
+    function eliminarCursoAdmin(id) {
+        db.collection("cursos").doc(String(id)).delete().then(() => {
+            alert("¡Curso eliminado de la nube!");
+            cargarCursosAdmin();
+        });
     }
 
     function agregarCursoNuevo() {
@@ -1095,21 +1076,30 @@
         if(!tit || !prec) { alert("Completá al menos el título y el precio del curso."); return; }
 
         let listaTemas = temTxt ? temTxt.split(',').map(t => t.trim()).filter(t => t.length > 0) : ["Certificado incluido"];
+        const nuevoId = Date.now();
+
+        const guardarCursoEnFirestore = (imgUrl) => {
+            db.collection("cursos").doc(String(nuevoId)).set({
+                id: nuevoId,
+                titulo: tit,
+                descripcion: desc,
+                temario: listaTemas,
+                precio: prec,
+                imagen: imgUrl
+            }).then(() => {
+                limpiarFormCurso();
+                alert("¡Nuevo curso agregado a la nube!");
+            });
+        };
 
         if (fileInput.files && fileInput.files[0]) {
             const reader = new FileReader();
             reader.onload = function(e) {
-                cursos.push({ id: Date.now(), titulo: tit, descripcion: desc, temario: listaTemas, precio: prec, imagen: e.target.result });
-                localStorage.setItem("admin_cursos", JSON.stringify(cursos));
-                renderCursos(searchInput.value);
-                limpiarFormCurso();
+                guardarCursoEnFirestore(e.target.result);
             };
             reader.readAsDataURL(fileInput.files[0]);
         } else {
-            cursos.push({ id: Date.now(), titulo: tit, descripcion: desc, temario: listaTemas, precio: prec, imagen: "" });
-            localStorage.setItem("admin_cursos", JSON.stringify(cursos));
-            renderCursos(searchInput.value);
-            limpiarFormCurso();
+            guardarCursoEnFirestore("");
         }
     }
 
@@ -1120,10 +1110,8 @@
         document.getElementById("nuevoCursoPrecio").value = "";
         document.getElementById("nuevoCursoImgFile").value = "";
         cargarCursosAdmin();
-        alert("¡Nuevo curso agregado!");
     }
 
-    // RENDERIZADO DE LA WEB PÚBLICA
     function renderServicios(filtro = "") {
         servicesGrid.innerHTML = "";
         const texto = filtro.toLowerCase();
@@ -1234,9 +1222,8 @@
             btn.textContent = dia;
 
             const fechaStr = fechaIterada.toLocaleDateString("es-AR");
-            const diaBloqueado = localStorage.getItem("bloqueo_dia_" + fechaStr) === "true";
 
-            if (fechaIterada.getDay() === 0 || fechaIterada < hoy || diaBloqueado) {
+            if (fechaIterada.getDay() === 0 || fechaIterada < hoy) {
                 btn.disabled = true;
             } else {
                 if (fechaSeleccionada === fechaStr) btn.classList.add("active");
