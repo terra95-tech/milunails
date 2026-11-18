@@ -929,7 +929,7 @@
         const reader = new FileReader();
         reader.onload = function(e) {
             const base64Img = e.target.result;
-            db.collection("servicios").doc(String(id)).update({ imagen: base64Img }).then(() => {
+            db.collection("servicios").doc(String(id)).set({ imagen: base64Img }, { merge: true }).then(() => {
                 alert("¡Foto de servicio actualizada en la nube!");
                 cargarServiciosAdmin();
             });
@@ -940,10 +940,10 @@
     function guardarServicioAdmin(id) {
         const nuevoNombre = document.getElementById(`s_nom_${id}`).value;
         const nuevoPrecio = document.getElementById(`s_pre_${id}`).value;
-        db.collection("servicios").doc(String(id)).update({
+        db.collection("servicios").doc(String(id)).set({
             nombre: nuevoNombre,
             precioTexto: nuevoPrecio
-        }).then(() => {
+        }, { merge: true }).then(() => {
             alert("¡Servicio actualizado en la nube con éxito!");
             cargarServiciosAdmin();
         });
@@ -1033,7 +1033,7 @@
         if (!file) return;
         const reader = new FileReader();
         reader.onload = function(e) {
-            db.collection("cursos").doc(String(id)).update({ imagen: e.target.result }).then(() => {
+            db.collection("cursos").doc(String(id)).set({ imagen: e.target.result }, { merge: true }).then(() => {
                 alert("¡Foto de curso actualizada en la nube!");
                 cargarCursosAdmin();
             });
@@ -1048,12 +1048,13 @@
         const temTxt = document.getElementById(`c_tem_${id}`).value;
         const listaTemas = temTxt ? temTxt.split(',').map(t => t.trim()).filter(t => t.length > 0) : [];
 
-        db.collection("cursos").doc(String(id)).update({
+        db.collection("cursos").doc(String(id)).set({
+            id: id,
             titulo: tit,
             precio: prec,
             descripcion: desc,
             temario: listaTemas
-        }).then(() => {
+        }, { merge: true }).then(() => {
             alert("¡Curso actualizado en la nube con éxito!");
             cargarCursosAdmin();
         });
