@@ -683,9 +683,7 @@
             <button type="button" class="modal-btn-confirm" id="modalConfirmBtn">Continuar a WhatsApp y Enviar Comprobante</button>
             <button type="button" class="modal-btn-cancel" id="modalCancelBtn">Revisar datos</button>
         </div>
-    </div>
-
-<script>
+    </div><script>
   const firebaseConfig = {
     apiKey: "AIzaSyDryynRgzNYa4wRcRdOKiqmJ0unUinPDQQ",
     authDomain: "milunails.firebaseapp.com",
@@ -760,6 +758,18 @@
     const coursesGrid = document.getElementById("coursesGrid");
     const searchInput = document.getElementById("searchInput");
 
+    function esAdminAbierto() {
+        return document.getElementById("adminModal").style.display === "flex";
+    }
+
+    function sincronizarSeleccionadosConServicios() {
+        const mapaServicios = new Map(servicios.map(s => [String(s.id), s]));
+        seleccionados = seleccionados
+            .filter(item => mapaServicios.has(String(item.id)))
+            .map(item => mapaServicios.get(String(item.id)));
+        actualizarResumen();
+    }
+
     window.addEventListener("DOMContentLoaded", () => {
         // Sincronización en tiempo real de Configuración (Logo y Portada) desde Firestore
         db.collection("configuracion").doc("general").onSnapshot(doc => {
@@ -779,9 +789,18 @@
             } else {
                 servicios = [];
                 snapshot.forEach(doc => {
-                    servicios.push(doc.data());
+                    const data = doc.data();
+                    servicios.push({
+                        ...data,
+                        id: data.id !== undefined ? data.id : doc.id
+                    });
                 });
+                servicios.sort((a, b) => Number(a.id) - Number(b.id));
+                sincronizarSeleccionadosConServicios();
                 renderServicios(searchInput.value);
+                if (esAdminAbierto()) {
+                    cargarServiciosAdmin();
+                }
             }
         });
 
@@ -794,9 +813,17 @@
             } else {
                 cursos = [];
                 snapshot.forEach(doc => {
-                    cursos.push(doc.data());
+                    const data = doc.data();
+                    cursos.push({
+                        ...data,
+                        id: data.id !== undefined ? data.id : doc.id
+                    });
                 });
+                cursos.sort((a, b) => Number(a.id) - Number(b.id));
                 renderCursos(searchInput.value);
+                if (esAdminAbierto()) {
+                    cargarCursosAdmin();
+                }
             }
         });
         
@@ -805,14 +832,21 @@
             turnosBloqueadosNube = {};
             snapshot.forEach(doc => {
                 const data = doc.data();
-                if(data.fecha && data.hora) {
+                if (data.fecha && data.hora) {
                     const claveLimpia = `${data.fecha}_${data.hora}`.replace(/\//g, '-');
                     turnosBloqueadosNube[claveLimpia] = data;
                 }
             });
+            if (fechaSeleccionada && horarioSeleccionado) {
+                const claveActual = `${fechaSeleccionada}_${horarioSeleccionado}`.replace(/\//g, '-');
+                if (turnosBloqueadosNube[claveActual]) {
+                    horarioSeleccionado = null;
+                    actualizarResumen();
+                }
+            }
             renderCalendario();
             renderHorarios();
-            if(document.getElementById("adminModal").style.display === "flex") {
+            if (esAdminAbierto()) {
                 cargarHorariosAdmin();
             }
         });
@@ -834,8 +868,8 @@
 
     function cerrarPanelAdmin() {
         document.getElementById("adminModal").style.display = "none";
-        renderServicios();
-        renderCursos();
+        renderServicios(searchInput.value);
+        renderCursos(searchInput.value);
         renderCalendario();
         renderHorarios();
     }
@@ -952,6 +986,8 @@
 
     function eliminarServicioAdmin(id) {
         db.collection("servicios").doc(String(id)).delete().then(() => {
+            seleccionados = seleccionados.filter(item => String(item.id) !== String(id));
+            actualizarResumen();
             alert("¡Servicio eliminado de la nube!");
             cargarServiciosAdmin();
         });
@@ -1124,7 +1160,7 @@
         );
 
         filtrados.forEach(servicio => {
-            const estaSeleccionado = seleccionados.some(item => item.id === servicio.id);
+            const estaSeleccionado = seleccionados.some(item => String(item.id) === String(servicio.id));
             const card = document.createElement("div");
             card.className = `service-card ${estaSeleccionado ? "selected" : ""}`;
 
@@ -1186,10 +1222,11 @@
     }
 
     function toggleServicio(id) {
-        const servicioObj = servicios.find(s => s.id === id);
-        const existe = seleccionados.find(s => s.id === id);
+        const servicioObj = servicios.find(s => String(s.id) === String(id));
+        if (!servicioObj) return;
+        const existe = seleccionados.find(s => String(s.id) === String(id));
         if (existe) {
-            seleccionados = seleccionados.filter(s => s.id !== id);
+            seleccionados = seleccionados.filter(s => String(s.id) !== String(id));
         } else {
             seleccionados.push(servicioObj);
         }
@@ -1370,8 +1407,5 @@
         });
     };
 </script>
-</body>
-</html>
-
 </body>
 </html>
