@@ -698,6 +698,21 @@
   const db = firebase.firestore();
 </script> 
 <script>
+   <script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDryynRgzNYa4wRcRdOKiqmJ0unUinPDQQ",
+    authDomain: "milunails.firebaseapp.com",
+    projectId: "milunails",
+    storageBucket: "milunails.firebasestorage.app",
+    messagingSenderId: "42213732950",
+    appId: "1:42213732950:web:fc6303d43c067d1bc381f7",
+    measurementId: "G-Q1V13CQSXV"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script> 
+<script>
     const TELEFONO_WHATSAPP = "5492241603077";
     const PASSWORD_ADMIN = "exequiel1910!";
     const horariosDisponibles = ["09:00", "10:30", "11:30", "14:00", "15:30", "17:45", "19:00"];
@@ -874,12 +889,56 @@
         renderHorarios();
     }
 
+    function comprimirImagenABase64(file, maxAncho = 900, calidad = 0.72) {
+        return new Promise((resolve, reject) => {
+            if (!file) {
+                resolve("");
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    let ancho = img.width;
+                    let alto = img.height;
+
+                    if (ancho > maxAncho) {
+                        alto = Math.round((alto * maxAncho) / ancho);
+                        ancho = maxAncho;
+                    }
+
+                    const canvas = document.createElement("canvas");
+                    canvas.width = ancho;
+                    canvas.height = alto;
+
+                    const ctx = canvas.getContext("2d");
+                    ctx.drawImage(img, 0, 0, ancho, alto);
+
+                    const esPng = file.type === "image/png";
+                    const mimeType = esPng ? "image/png" : "image/jpeg";
+                    const resultadoBase64 = esPng
+                        ? canvas.toDataURL("image/png")
+                        : canvas.toDataURL("image/jpeg", calidad);
+
+                    resolve(resultadoBase64);
+                };
+                img.onerror = function(err) {
+                    reject(err);
+                };
+                img.src = e.target.result;
+            };
+            reader.onerror = function(err) {
+                reject(err);
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
     function subirImagenNube(event, tipo) {
         const file = event.target.files[0];
         if (!file) return;
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const base64Img = e.target.result;
+        const maxAncho = tipo === "logo" ? 500 : 1000;
+        comprimirImagenABase64(file, maxAncho, 0.75).then((base64Img) => {
             db.collection("configuracion").doc("general").set({
                 [tipo]: base64Img
             }, { merge: true }).then(() => {
@@ -887,8 +946,9 @@
             }).catch(err => {
                 alert("Error al subir la imagen a la nube: " + err.message);
             });
-        };
-        reader.readAsDataURL(file);
+        }).catch(err => {
+            alert("Error al procesar la imagen: " + err.message);
+        });
     }
 
     function cargarHorariosAdmin() {
@@ -961,15 +1021,14 @@
     function cambiarFotoServicioAdmin(event, id) {
         const file = event.target.files[0];
         if (!file) return;
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const base64Img = e.target.result;
+        comprimirImagenABase64(file, 800, 0.72).then((base64Img) => {
             db.collection("servicios").doc(String(id)).set({ imagen: base64Img }, { merge: true }).then(() => {
                 alert("¡Foto de servicio actualizada en la nube!");
                 cargarServiciosAdmin();
             });
-        };
-        reader.readAsDataURL(file);
+        }).catch(err => {
+            alert("Error al procesar la imagen: " + err.message);
+        });
     }
 
     function guardarServicioAdmin(id) {
@@ -1017,11 +1076,11 @@
         };
 
         if (fileInput.files && fileInput.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                guardarEnFirestore(e.target.result);
-            };
-            reader.readAsDataURL(fileInput.files[0]);
+            comprimirImagenABase64(fileInput.files[0], 800, 0.72).then((imgComprimida) => {
+                guardarEnFirestore(imgComprimida);
+            }).catch(err => {
+                alert("Error al procesar la imagen: " + err.message);
+            });
         } else {
             guardarEnFirestore("");
         }
@@ -1068,14 +1127,14 @@
     function cambiarFotoCursoAdmin(event, id) {
         const file = event.target.files[0];
         if (!file) return;
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            db.collection("cursos").doc(String(id)).set({ imagen: e.target.result }, { merge: true }).then(() => {
+        comprimirImagenABase64(file, 800, 0.72).then((base64Img) => {
+            db.collection("cursos").doc(String(id)).set({ imagen: base64Img }, { merge: true }).then(() => {
                 alert("¡Foto de curso actualizada en la nube!");
                 cargarCursosAdmin();
             });
-        };
-        reader.readAsDataURL(file);
+        }).catch(err => {
+            alert("Error al procesar la imagen: " + err.message);
+        });
     }
 
     function guardarCursoAdmin(id) {
@@ -1131,11 +1190,11 @@
         };
 
         if (fileInput.files && fileInput.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                guardarCursoEnFirestore(e.target.result);
-            };
-            reader.readAsDataURL(fileInput.files[0]);
+            comprimirImagenABase64(fileInput.files[0], 800, 0.72).then((imgComprimida) => {
+                guardarCursoEnFirestore(imgComprimida);
+            }).catch(err => {
+                alert("Error al procesar la imagen: " + err.message);
+            });
         } else {
             guardarCursoEnFirestore("");
         }
